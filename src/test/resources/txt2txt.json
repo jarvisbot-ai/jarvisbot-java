@@ -1,0 +1,21 @@
+{
+    "id": "chatcmpl-82145f33-287b-4767-afb9-37226ef33c6a",
+    "object": "chat.completion",
+    "created": 1709798522,
+    "model": "/local/llm_models/llama-2-7b-chat.Q4_K_M.gguf",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "content": "  Of course! The capital of France is Paris. 🇫🇷",
+                "role": "assistant"
+            },
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 33,
+        "completion_tokens": 20,
+        "total_tokens": 53
+    }
+}

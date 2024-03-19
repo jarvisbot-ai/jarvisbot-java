@@ -1,0 +1,10 @@
+{
+  "id": "",
+  "object": "asr",
+  "created": 1709794298,
+  "model": "whisper-large-v3-q5",
+  "text": [
+    " Hi, I'm Longking Chao.\n"
+  ],
+  "message": ""
+}
