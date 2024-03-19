@@ -4,6 +4,25 @@
 > [!IMPORTANT]
 > JarvisBot SDK is currently undergoing rapid development, which may lead to stability and compatibility issues. You can email support@jarvisbot.ai to request an access token. We will periodically open up trials.
 
+## Import dependencies
+
+**Gradle**
+
+```groovy
+implementation("io.github.jarvisbot-ai:jarvisbot-java:latest")
+```
+
+**Maven**
+
+```xml
+
+<dependency>
+    <groupId>io.github.jarvisbot-ai</groupId>
+    <artifactId>jarvisbot-java</artifactId>
+    <version>latest</version>
+</dependency>
+```
+
 # How to Use
 
 ### The sample way to use
