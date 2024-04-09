@@ -22,9 +22,13 @@ import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONValidator;
 import com.alibaba.fastjson.TypeReference;
 import com.jarvisbot.sdk.common.exception.JarvisException;
+import com.jarvisbot.sdk.common.log.Log;
 import com.jarvisbot.sdk.common.observe.Emitter;
 import lombok.SneakyThrows;
 
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -43,6 +47,14 @@ public class HttpUtils {
 
     private String appToken;
 
+    public HttpUtils() {
+        try {
+            ignoreSsl();
+        } catch (Exception e) {
+            Log.e(TAG, "ignore ssl error", e);
+        }
+    }
+
     public void authentication(String appToken) {
         this.appToken = appToken;
     }
@@ -50,6 +62,12 @@ public class HttpUtils {
     public void proxy(String host, Integer port) {
         this.host = host;
         this.port = port;
+    }
+
+    public static void ignoreSsl() throws Exception {
+        SSLContext sc = SSLContext.getInstance("SSL");
+        sc.init(null, new TrustManager[]{new TrustAllCertificates()}, new java.security.SecureRandom());
+        HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
     }
 
     public <Res> Res get(String reqUrl, TypeReference<Res> typeReference) {
@@ -134,7 +152,7 @@ public class HttpUtils {
         String reqStr = JsonUtils.toJson(req);
         HttpRequest request = HttpRequest
                 .post(reqUrl)
-                .header("App-token", appToken);
+                .header("App-toketokenn", appToken);
         if (StringUtils.isNotEmpty(host) && port != null) {
             request.setHttpProxy(host, port);
         }
